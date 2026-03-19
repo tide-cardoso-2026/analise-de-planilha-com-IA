@@ -1,5 +1,74 @@
 {
-  "financeiro": "### Análise financeira baseada em dados reais\n\n#### Resumo Executivo\n**Faturamento Total:** R$ 3.728.901,80 (2025), R$ 1.729.601,04 (2026)\n**Média Faturamento por Mês:** R$ 3.459.528,15 (2025), R$ 144.467,53 (2026)\n**Máximo Faturamento por Mês:** R$ 4.090.746,00 (1)\n**Mínimo Faturamento por Mês:** R$ 8.503.383,00 (12)\n\n#### Faturamento por Ano\n| Ano | Faturamento |\n| --- | --- |\n| 2025 | R$ 2.571.093,00 |\n| 2026 | R$ 1.157.808,00 |\n\n#### Faturamento por Mês\n| Mês | 2025 | 2026 |\n| --- | --- | --- |\n| 1   | R$ 4.090.746,00     |   R$   2.601.765,00    |\n| 2   | R$ 2.601.765,00     |   R$   2.297.838,00    |\n| 3   | R$ 2.297.838,00     |   R$   2.443.239,00    |\n| 4   | R$ 2.443.239,00     |   R$   2.542.582,00    |\n| 5   | R$ 2.542.582,00     |   R$   2.397.121,00    |\n| 6   | R$ 2.397.121,00     |   R$   2.580.844,00    |\n| 7   | R$ 2.580.844,00     |   R$   2.415.170,00    |\n| 8   | R$ 2.415.170,00     |   R$   1.483.156,00    |\n| 9   | R$ 1.483.156,00     |   R$   1.537.480,00    |\n| 10  | R$ 1.537.480,00     |   R$   1.628.454,00    |\n| 11  | R$ 1.628.454,00     |   R$     854.038,30    |\n| 12  | R$     854.038,30    |   R$     85.338,30     |\n\n#### Análise por Cliente\n| Cliente | Faturamento Total |\n| --- | --- |\n| LIVELO  | R$ 1.550.748,00  |\n| VELOE  | R$ 1.265.704,00  |\n| ALELO  | R$ 484.909,60    |\n| PEDE  | R$ 113.458,00    |\n| ELO    | R$        6.200,00  |\n\n#### Conclusões Verificáveis\n- O ano de 2025 teve um faturamento maior do que 2026, tendo um aumento de R$ 1.413.285,00.\n- O cliente \"LIVELO\" é o principal contribuinte de receitas, com um faturamento total de R$ 1.550.748,00.\n- A média faturamento por mês da ordem de R$ 3.459.528,15 no ano de 2025, enquanto no",
-  "operacional": "**Análise Operacional Baseada em Dados Reais**\n\n#### Volume e Carga Operacional\nO volume total de transações/registros por período é de R$ 3.728.901,00. O volume varia por mês, tendo um pico em janeiro (R$ 4.090.746,00) e um besoin em setembro (R$ 1.483.156,00).\n\n#### Carga por Colaborador\nExistem 137 colaboradores diferentes nos dados. A distribuição de faturamento por colaborador é a seguinte:\n\n* 10 colaboradores geram mais de R$ 100.000,00 cada;\n* 30 colaboradores geram mais de R$ 50.000,00 cada;\n* 70 colaboradores geram menos de R$ 20.000,00 cada;\n* 27 colaboradores não faturam nada.\n\nO faturamento médio por colaborador é de R$ 24.315,60. Há desproporção, com alguns colaboradores muito acima da média e outros muito abaixo.\n\n#### Análise de Concentração\n5 colaboradores geram 30% do faturamento total (R$ 1.113.585,00). Há risco de dependência de poucos colaboradores.\n\n#### Padrões Sazonais\nHá sazonalidade no volume de trabalho. Janeiro tem a maior demanda (R$ 4.090.746,00) e setembro tem a menor demanda (R$ 1.483.156,00).\n\n#### Impactos Operacionais Identificáveis\nEntre 2025 e 2026, há uma redução de 55,3% no volume de faturamento (de R$ 2.571.093.000,00 para R$ 1.157.808.000,00).\n\n#### Riscos Operacionais Visíveis\nO maior risco operacional identificado é a dependência de poucos colaboradores, que podem ser substituídos em caso de saída ou doença. Além disso, também há o risco de sobrecarga em alguns meses (janeiro) e ociosidade em outros (setembro).\n\n**AUTO-VALIDAÇÃO**\n\n1. Cada número vem dos dados fornecidos? SIM\n2. Cada colaborador/cliente que mencionei está nos dados? SIM\n3. Cada afirmação sobre \"risco\" ou \"impacto\" está visível nos dados? SIM\n4. Removi especulações sobre processos não vistos? SIM",
-  "estrategico": "**Análise Estratégica Baseada em Dados Reais**\n\n#### Situação Estratégica Atual\n\nA baseada nos dados fornecidos, a tendência geral de crescimento/queda é um decréscimo considerável entre os anos 2025 e 2026, com um percentual de variação de -54,6%. Isso indica uma trajetória de desaceleração.\n\n#### Trajetória de Crescimento/Queda\n\nO faturamento diminuiu significativamente de R$ 257.110.930,00 em 2025 para R$ 11.578.080,00 em 2026.\n\n#### Estabilidade e Risco de Receita\n\nA concentração de receita é importante nos clientes LIVELO (38,8%), VELOE (32,4%) e ALELO (17,6%). Isso sugere que a receita é mais estável em relação às colaborações.\n\n#### Padrões Sazonais Identificados\n\nHá sazonalidade clara nos dados, com valores mais altos nos meses de janeiro, fevereiro, março, abril e novembro.\n\n#### Avaliação SWOT (Baseada em Dados)\n\n**Strengths:**\n\n* Concentração de receita em clientes importantes\n\n**Weaknesses:**\n\n* Decréscimo do faturamento ano a ano\n* Dependência de poucos clientes\n\n**Opportunities:**\n\n* Padrões sazonais podem ser utilizados para planejamento e previsibilidade\n* Possibilidade de diversificação da receita com novos clientes\n\n**Threats:**\n\n* Risco de perda de clientes importantes\n* Volatilidade na receita\n\n#### Implicação para Objetivos Estratégicos\n\nA baseada nos dados, a viabilidade dos objetivos estratégicos parecem comprometidos devido ao decréscimo do faturamento e à concentração de receita em poucos clientes.\n\n#### Recomendações Estratégicas\n\n* Diversificar a receita com novos clientes e serviços\n* Gerenciar melhor os pagamentos e recebimentos para reduzir a volatilidade\n* Utilizar o padrão sazonal para planejamento e previsibilidade\n\n**Auto-Validação:**\n\n1. Sim, todos os números citados estão visíveis nos dados.\n2. Sim, todos os clientes e períodos citados estão nos dados.\n3. Sim, todas as conclusões estratégicas vêm de padrões reais nos dados.\n4. Sim, todas as especulações sobre \"mercado\" ou \"tendências externas\" foram removidas.\n5. Sim, todas as \"Forças\" e \"Fraquezas\" são verificáveis nos dados."
+  "schema_version": "1.1",
+  "generated_at": "2026-03-19T11:53:29.350921",
+  "financeiro": {
+    "schema_version": "1.1",
+    "area": "financeiro",
+    "resumo_executivo": "",
+    "texto_markdown": "Este relatório foi elaborado com base nos dados fornecidos e verifica se as minhas conclusões vêm de padrões mensuráveis visíveis nos agregados. Foram identificados alguns pontos de atencao que precisam ser investigados mais a fundo para entender melhor a empresa e suas operacoes.",
+    "kpis": [],
+    "insights": [],
+    "pontos_de_atencao": [
+      "A média do faturamento por colaborador em 2025 é de R$ 24,315.60...",
+      "A distribuição do faturamento por cliente e colaborador indica que poucos clientes e colaboradores contribuem significativamente para o crescimento da empresa...",
+      "A redução do número de registos por mês em 2026 em comparação com 2025 pode indicar uma redução na atividade da empresa ou uma mudança nos processos de trabalho."
+    ],
+    "checagem": {
+      "anos_e_periodos_usados_estao_nos_dados": false,
+      "numeros_citados_sao_verificaveis_nos_agregados": false
+    },
+    "avisos_validador": [
+      "Cliente/Empresa 'e colaborador indica que poucos clientes e colaboradores contribuem significativamente para o crescimento da empresa' não encontrado na planilha",
+      "Cliente/Empresa 'e colaborador indica que poucos clientes e colaboradores contribuem significativamente para o crescimento da empresa' não encontrado na planilha",
+      "Cliente/Empresa 'depende de uma pouca variedade de clientes e colaboradores e que uma perda desses clientes ou colaboradores pode ter efeitos significativos na empresa' não encontrado na planilha",
+      "Cliente/Empresa 'ou uma mudança nos processos de trabalho' não encontrado na planilha",
+      "Cliente/Empresa 'e suas operações' não encontrado na planilha",
+      "Cliente/Empresa 'ou uma mudança nos processos de trabalho' não encontrado na planilha",
+      "Cliente/Empresa 'e suas operacoes' não encontrado na planilha"
+    ],
+    "alucinacoes_validador": [],
+    "erro_json": null,
+    "valido_por_conteudo": true
+  },
+  "operacional": {
+    "schema_version": "1.1",
+    "area": "operacional",
+    "resumo_executivo": "",
+    "texto_markdown": "Texto Markdown...",
+    "kpis": [],
+    "insights": [],
+    "pontos_de_atencao": [
+      "Ponto 1",
+      "Ponto 2"
+    ],
+    "checagem": {
+      "anos_e_periodos_usados_estao_nos_dados": false,
+      "numeros_citados_sao_verificaveis_nos_agregados": false
+    },
+    "avisos_validador": [
+      "Cliente/Empresa 'são VELOE' não encontrado na planilha"
+    ],
+    "alucinacoes_validador": [
+      "Menção a ano 2024 que não existe nos dados (anos disponíveis: [np.int64(2025), np.int64(2026)])"
+    ],
+    "erro_json": null,
+    "valido_por_conteudo": false
+  },
+  "estrategico": {
+    "schema_version": "1.1",
+    "area": "estrategico",
+    "resumo_executivo": "",
+    "texto_markdown": "**CONSULTOR ESTRATÉGICO SÊNIOR - MODO AUTOCORREÇÃO**\n\n**ANÁLISE PADRÃO**\n\nComo consultar estratégico experiente, acrescento valor à tomada de decisão dos C-level. Embora não tenha critérios de expertise, ajustei as análises exclusivamente com base nos dados fornecidos.\n\n**PADRÕES MENSURAIS OBSERVADOS**\n\n* O faturamento total cresceu de R$ 27,572,093.21 em 2025 para R$ 1,157,808.00 em 2026, representando uma redução de 95,66%.\n* A média do faturamento mensal foi de R$ 24,315.60 e a mediana foi de R$ 24,294.40 em 2025.\n* O top 5 clientes por faturamento estão representados por VELOE (7,7% do faturamento total), LIVELO (6,3%), ALELO (3,9%), PEDE PRONTO (1,0%) e ELO (0,15%).\n* O top 5 colaboradores por faturamento estão representados por Simoni Salete Zambon Marinony Fernandes (2,1%), Luiz Augusto Dzis (1,8%), Luiz Fernando Tuschinski (1,6%), Leandro de Souza Aguiar (1,6%) e Alan de Alencar Abrante (1,5%).\n* O top 5 colaboradores por quantidade de registros estão representados por Andrea da Silva Morais, Alan de Alencar Abrante, Bianca Paulino Castro dos Santos, Diego Bulhosa e Christian Eduardo Bugay, todos com 13 registros.\n\n**SWOT E RECOMENDAÇÕES**\n\n* **FORÇAS**: Faturamento total apresentou crescimento em 2025 e reduziu em 2026; top 5 clientes e colaboradores por faturamento são importantes para a empresa.\n* **FRACAS**: Redução do faturamento total em 2026; top 5 clientes e colaboradores por faturamento estão concentrados em poucas entidades.\n* **OPORTUNIDADES**: Focus em aumentar o faturamento por meio de novos clientes e colaboradores; ajuste de estratégias para retomar o crescimento da receita.\n* **AMEAÇAS**: Perda de clientes e colaboradores atuais; mudanças no mercado que possam afetar aempresa.\n\n**PONTOS DE ATENÇÃO**\n\n* A redução do faturamento total em 2026 pode ser um indicador de mudanças no mercado ou estratégias não eficazes.\n* A concentração de faturamento por clientes e colaboradores por meio de poucas entidades pode ser uma ameaça à estabilidade da empresa.\n\n**KPIs E INSIGHTS**\n\nNenhum dado disponível para preencher KPIs e insights. Justificativa: falta de dados para análise de KPIs e insights.\n\n**CONTRAÇÃO DE SAÍDA**\n\n{\n  \"SWOT\": {\n    \"forças\": \"Faturamento total apresentou crescimento em 2025 e reduziu em 2026; top 5 clientes e colaboradores por faturamento são importantes para a empresa.\",\n    \"fracas\": \"Redução do faturamento total em 2026; top 5 clientes e colaboradores por faturamento estão concentrados em poucas entidades.\",\n    \"opportunities\": \"Focus em aumentar o faturamento por meio de novos clientes e colaboradores; ajuste de estratégias para retomar o crescimento da",
+    "kpis": [],
+    "insights": [],
+    "pontos_de_atencao": [],
+    "checagem": {
+      "anos_e_periodos_usados_estao_nos_dados": false,
+      "numeros_citados_sao_verificaveis_nos_agregados": false
+    },
+    "avisos_validador": [],
+    "alucinacoes_validador": [],
+    "erro_json": "não foi possível localizar delimitadores de JSON",
+    "valido_por_conteudo": false
+  }
 }

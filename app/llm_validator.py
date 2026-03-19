@@ -316,20 +316,31 @@ def extrair_json_do_texto(texto: str) -> Tuple[Optional[Dict[str, Any]], Optiona
     except Exception:
         pass
 
-    # Tentativa 2: heurística pelos delimitadores do JSON.
-    start = raw.find("{")
+    # Tentativa 2: tenta extrair o(s) objeto(s) JSON mais plausível(is) perto do final.
     end = raw.rfind("}")
-    if start == -1 or end == -1 or end <= start:
+    if end == -1:
         return None, "não foi possível localizar delimitadores de JSON"
 
-    candidato = raw[start : end + 1]
-    try:
-        payload = json.loads(candidato)
-        if isinstance(payload, dict):
-            return payload, None
-        return None, "JSON extraído mas não é um objeto (dict)"
-    except Exception as e:
-        return None, f"falha ao fazer parse do JSON extraído: {str(e)}"
+    # Recuar o "start" até achar um JSON parseável.
+    scan_end = end
+    while scan_end > 0:
+        start = raw.rfind("{", 0, scan_end + 1)
+        if start == -1:
+            break
+
+        candidato = raw[start : end + 1]
+        try:
+            payload = json.loads(candidato)
+            if isinstance(payload, dict):
+                return payload, None
+            return None, "JSON extraído mas não é um objeto (dict)"
+        except Exception:
+            # Se falhar, desloca o end para antes do '{' encontrado,
+            # forçando a tentar outro candidato mais "interno".
+            end = start - 1
+            scan_end = end
+
+    return None, "não foi possível localizar/parsear um objeto JSON válido"
 
 
 def normalizar_payload_area(payload: Any, tipo_assistente: str) -> Dict[str, Any]:
