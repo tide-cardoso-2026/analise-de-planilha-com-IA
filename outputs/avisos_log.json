@@ -1,37 +1,500 @@
-[
-  {
-    "timestamp": "2026-03-19T07:48:59.050758",
-    "assistente": "financeiro",
-    "quantidade_avisos": 2,
-    "quantidade_erros": 0,
-    "avisos": [
-      "Cliente/Empresa '| Cliente | Faturamento Total |\n| --- | --- |\n| LIVELO  | R$ 1' não encontrado na planilha",
-      "Cliente/Empresa '\"LIVELO\" é o principal contribuinte de receitas' não encontrado na planilha"
-    ],
-    "erros": [],
-    "tamanho_resposta": 1703,
-    "primeiras_100_chars": "### Análise financeira baseada em dados reais\n\n#### Resumo Executivo\n**Faturamento Total:** R$ 3.728"
-  },
-  {
-    "timestamp": "2026-03-19T07:49:11.021244",
-    "assistente": "operacional",
-    "quantidade_avisos": 1,
-    "quantidade_erros": 0,
-    "avisos": [
-      "Cliente/Empresa 'que mencionei está nos dados? SIM\n3' não encontrado na planilha"
-    ],
-    "erros": [],
-    "tamanho_resposta": 1732,
-    "primeiras_100_chars": "**Análise Operacional Baseada em Dados Reais**\n\n#### Volume e Carga Operacional\nO volume total de tr"
-  },
-  {
-    "timestamp": "2026-03-19T07:49:23.016136",
-    "assistente": "estrategico",
-    "quantidade_avisos": 0,
-    "quantidade_erros": 0,
-    "avisos": [],
-    "erros": [],
-    "tamanho_resposta": 2047,
-    "primeiras_100_chars": "**Análise Estratégica Baseada em Dados Reais**\n\n#### Situação Estratégica Atual\n\nA baseada nos dados"
-  }
-]
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-03-19T11:53:13.006449",
+  "items": [
+    {
+      "timestamp": "2026-03-19T07:48:59.050758",
+      "assistente": "financeiro",
+      "quantidade_avisos": 2,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa '| Cliente | Faturamento Total |\n| --- | --- |\n| LIVELO  | R$ 1' não encontrado na planilha",
+        "Cliente/Empresa '\"LIVELO\" é o principal contribuinte de receitas' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 1703,
+      "primeiras_100_chars": "### Análise financeira baseada em dados reais\n\n#### Resumo Executivo\n**Faturamento Total:** R$ 3.728"
+    },
+    {
+      "timestamp": "2026-03-19T07:49:11.021244",
+      "assistente": "operacional",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'que mencionei está nos dados? SIM\n3' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 1732,
+      "primeiras_100_chars": "**Análise Operacional Baseada em Dados Reais**\n\n#### Volume e Carga Operacional\nO volume total de tr"
+    },
+    {
+      "timestamp": "2026-03-19T07:49:23.016136",
+      "assistente": "estrategico",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 2047,
+      "primeiras_100_chars": "**Análise Estratégica Baseada em Dados Reais**\n\n#### Situação Estratégica Atual\n\nA baseada nos dados"
+    },
+    {
+      "timestamp": "2026-03-19T09:10:47.956084",
+      "assistente": "financeiro",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'O cliente LIVELO contribui mais com R$ 388' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 1445,
+      "primeiras_100_chars": "**Análise Financeira Baseada em Dados Reais**\n\n#### Resumo Executivo\nO faturamento total entre os an"
+    },
+    {
+      "timestamp": "2026-03-19T09:11:00.655378",
+      "assistente": "operacional",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 2501,
+      "primeiras_100_chars": " Kong! 🎉\n\n### Análise Operacional Baseada em Dados Reais\n\n#### Volume e Carga Operacional\nA partir d"
+    },
+    {
+      "timestamp": "2026-03-19T09:11:07.298552",
+      "assistente": "estrategico",
+      "quantidade_avisos": 5,
+      "quantidade_erros": 1,
+      "avisos": [
+        "Cliente/Empresa 'com a maior participação no faturamento é o LIVELO' não encontrado na planilha",
+        "Cliente/Empresa 'mais importante é o LIVELO' não encontrado na planilha",
+        "Cliente/Empresa 'mais importante está aumentando' não encontrado na planilha",
+        "Cliente/Empresa 'mais importante' não encontrado na planilha",
+        "Cliente/Empresa 'em anais de 2023' não encontrado na planilha"
+      ],
+      "erros": [
+        "Menção a ano 2023 que não existe nos dados (anos disponíveis: [np.int64(2025), np.int64(2026)])"
+      ],
+      "tamanho_resposta": 2020,
+      "primeiras_100_chars": "### Análise Estratégica Baseada em Dados Reais\n\n#### Situação Estratégica Atual\nO período analisado "
+    },
+    {
+      "timestamp": "2026-03-19T09:14:06.803234",
+      "assistente": "financeiro",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa '| Cliente | Faturamento |\n| --- | --- |\n| LIVELO | R$ 388' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 1408,
+      "primeiras_100_chars": "**Analise Financeira Baseada em Dados Reais**\n\n#### Resumo Executivo\nO faturamento total em 2025 foi"
+    },
+    {
+      "timestamp": "2026-03-19T09:14:11.150506",
+      "assistente": "operacional",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 2089,
+      "primeiras_100_chars": "As um consultor operacional sênior, eu realizarei a análise obrigatória com base nos dados reais for"
+    },
+    {
+      "timestamp": "2026-03-19T09:14:34.257143",
+      "assistente": "estrategico",
+      "quantidade_avisos": 4,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'mais importante é o LIVELO' não encontrado na planilha",
+        "Cliente/Empresa 'mais importante\n* Recorte de gastos por parte dos clientes\n* Competição por clientela\n\n#### Implicação para Objetivos Estratégicos\n\nA viabilidade dos objetivos estratégicos depende da capacidade da empresa emartsolar a receita e a estabilidade da base de clientes' não encontrado na planilha",
+        "Cliente/Empresa 'e período mencionado está nos dados' não encontrado na planilha",
+        "Cliente/Empresa 'emartsolar a receita e a estabilidade da base de clientes' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 2654,
+      "primeiras_100_chars": "**ANÁLISE ESTRATÉGICA BASEADA EM DADOS REAIS**\n\n#### Situação Estratégica Atual\n\nA receita demonstra"
+    },
+    {
+      "timestamp": "2026-03-19T09:17:41.271965",
+      "assistente": "financeiro",
+      "quantidade_avisos": 4,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'que contribui mais (R$ 24' não encontrado na planilha",
+        "Cliente/Empresa 'com maior faturamento (R$ 24' não encontrado na planilha",
+        "Cliente/Empresa '[Top clientes with real values]\n| Cliente | Faturamento |\n| --- | --- |\n| LIVELO | R$ 24' não encontrado na planilha",
+        "Cliente/Empresa 'ALELO é o que contribui mais para o faturamento total' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 1519,
+      "primeiras_100_chars": "**Análise Financeira Baseada em Dados Reais**\n\n#### Resumo Executivo\nFaturamento total: R$ 75,900,91"
+    },
+    {
+      "timestamp": "2026-03-19T09:17:54.743544",
+      "assistente": "operacional",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 1801,
+      "primeiras_100_chars": "**Análise Operacional Baseada em Dados Reais**\n\n#### Volume e Carga Operacional\n\n- Volume total de t"
+    },
+    {
+      "timestamp": "2026-03-19T09:18:16.100008",
+      "assistente": "estrategico",
+      "quantidade_avisos": 2,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'LIVELO sendo o mais importante' não encontrado na planilha",
+        "Cliente/Empresa 'LIVELO é um cliente importante e consistentemente contribui para a receita' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 2526,
+      "primeiras_100_chars": "**Análise Estratégica Baseada em Dados Reais**\n\n#### Situação Estratégica Atual\n\nCom base nos dados,"
+    },
+    {
+      "timestamp": "2026-03-19T09:21:10.976909",
+      "assistente": "financeiro",
+      "quantidade_avisos": 2,
+      "quantidade_erros": 2,
+      "avisos": [
+        "Cliente/Empresa '| Faturamento |\n| --- | --- |\n| LIVELO | 388 |\n| VELOE | 356 |\n| ALELO | 242 |\n| PEDE PRONTO | 113 |\n| ELO | 6 |\n\n**Conclusões Verificáveis**\nO cliente LIVELO é o maior cliente' não encontrado na planilha",
+        "Cliente/Empresa 'ELO é o menor cliente' não encontrado na planilha"
+      ],
+      "erros": [
+        "Menção a ano 2027 que não existe nos dados (anos disponíveis: [np.int64(2025), np.int64(2026)])",
+        "Menção a ano 2024 que não existe nos dados (anos disponíveis: [np.int64(2025), np.int64(2026)])"
+      ],
+      "tamanho_resposta": 1016,
+      "primeiras_100_chars": "**Análise Financeira Baseada em Dados Reais**\n\n**Resumo Executivo**\nO faturamento total para o perío"
+    },
+    {
+      "timestamp": "2026-03-19T09:21:19.871082",
+      "assistente": "operacional",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 2926,
+      "primeiras_100_chars": "### Análise Operacional Baseada em Dados Reais\n\n#### Volume e Carga Operacional\nO volume total de tr"
+    },
+    {
+      "timestamp": "2026-03-19T09:21:42.848112",
+      "assistente": "estrategico",
+      "quantidade_avisos": 4,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'mais importante' não encontrado na planilha",
+        "Cliente/Empresa 'pode explorar as oportunidades apresentadas pelo padrão sazonal' não encontrado na planilha",
+        "Cliente/Empresa 'enfrenta o risco de dependência de clientes individualmente importantes' não encontrado na planilha",
+        "Cliente/Empresa 'precisará revisitar suas estratégias e investir em soluções para mitigar os riscos e superar os desafios apresentados' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 2826,
+      "primeiras_100_chars": "**Análise Estratégica Baseada em Dados Reais**\n\n#### Situação Estratégica Atual\n\nA análise dos dados"
+    },
+    {
+      "timestamp": "2026-03-19T09:24:45.299783",
+      "assistente": "financeiro",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa '| Cliente | Faturamento Total |\n| --- | --- |\n| LIVELO | R$ 388' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 1589,
+      "primeiras_100_chars": "### Análise Financeira Baseada em Dados Reais\n\n#### Resumo Executivo\n\n* O faturamento total em 2025 "
+    },
+    {
+      "timestamp": "2026-03-19T09:24:54.314246",
+      "assistente": "operacional",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 3192,
+      "primeiras_100_chars": "**Análise Operacional Baseada em Dados Reais**\n\n### Volume e Carga Operacional\nDe acordo com os dado"
+    },
+    {
+      "timestamp": "2026-03-19T09:24:58.595123",
+      "assistente": "estrategico",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'LIVELO sido o maior contribuidor' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 2223,
+      "primeiras_100_chars": "Como consultor estratégico senior, é responsabilidade minha analisar os dados fornecidos e desenvolv"
+    },
+    {
+      "timestamp": "2026-03-19T09:52:34.594764",
+      "assistente": "financeiro",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 1523,
+      "primeiras_100_chars": "**Análise Financeira Baseada em Dados Reais**\n\n#### Resumo Executivo\nO faturamento total entre 2025 "
+    },
+    {
+      "timestamp": "2026-03-19T09:52:42.300272",
+      "assistente": "operacional",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'se um desses colaboradores sair ou reduzir sua carga de trabalho' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 1652,
+      "primeiras_100_chars": "**Análise Operacional Baseada em Dados Reais**\n\n#### Volume e Carga Operacional\nO volume total de tr"
+    },
+    {
+      "timestamp": "2026-03-19T09:52:53.179816",
+      "assistente": "estrategico",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'LIVELO contribuindo com 25' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 2335,
+      "primeiras_100_chars": "**Análise Estratégica Baseada em Dados Reais**\n\n#### Situação Estratégica Atual\nA receita total aume"
+    },
+    {
+      "timestamp": "2026-03-19T10:59:56.528051",
+      "assistente": "financeiro",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa '| Cliente | Faturamento |\n| --- | --- |\n| LIVELO | R$ 1' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 1953,
+      "primeiras_100_chars": "**Análise Financeira Baseada em Dados Reais**\n\n#### Resumo Executivo\nO faturamento total foi de R$ 2"
+    },
+    {
+      "timestamp": "2026-03-19T11:00:12.775984",
+      "assistente": "operacional",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 1766,
+      "primeiras_100_chars": "**Análise Operacional Baseada em Dados Reais**\n\n#### Volume e Carga Operacional\n\n- O volume total de"
+    },
+    {
+      "timestamp": "2026-03-19T11:00:21.534469",
+      "assistente": "estrategico",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'mais importante é o ALELO' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 3230,
+      "primeiras_100_chars": "### Análise Estratégica Baseada em Dados Reais\n\n#### Situação Estratégica Atual\nA tendência geral de"
+    },
+    {
+      "timestamp": "2026-03-19T11:43:12.587896",
+      "assistente": "financeiro",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 100,
+      "primeiras_100_chars": "Sim, minha resposta é sim [OK]. Minhas conclusões vêm de padrões mensuráveis visíveis nos agregados."
+    },
+    {
+      "timestamp": "2026-03-19T11:43:21.726306",
+      "assistente": "operacional",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 4474,
+      "primeiras_100_chars": "**Análise**\n\n### 1. Autocorrção: Verifique se as contagens e agregados math foram realizados correta"
+    },
+    {
+      "timestamp": "2026-03-19T11:43:31.348786",
+      "assistente": "estrategico",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 1778,
+      "primeiras_100_chars": "**ANÁLISE BASEADA SOMENTE EM DADOS**\n\nA seguir, apresento minhas observações e recomendações baseada"
+    },
+    {
+      "timestamp": "2026-03-19T11:49:41.514848",
+      "assistente": "financeiro",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 1678,
+      "primeiras_100_chars": "OK\n\nComo consultor financeiro senior, dediquei tempo para analisar os dados abaixo:\n\n* Os dados apre"
+    },
+    {
+      "timestamp": "2026-03-19T11:49:42.698576",
+      "assistente": "financeiro",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 104,
+      "primeiras_100_chars": "{ \"status\": \"OK\", \"conclusoes\": \"Minhas conclusões vêm de padrões mensuráveis visíveis nos agregados"
+    },
+    {
+      "timestamp": "2026-03-19T11:49:48.046302",
+      "assistente": "operacional",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 1117,
+      "primeiras_100_chars": "Sim, eu concordo que você realizou a análise dos dados de forma correrente. Você não inventou pessoa"
+    },
+    {
+      "timestamp": "2026-03-19T11:49:49.972791",
+      "assistente": "operacional",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'VELOE é o que mais contribui para o faturamento' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 362,
+      "primeiras_100_chars": "```json\n{\n  \"acerto\": \"OK\",\n  \"conclusoes\": [\n    \"A soma total do faturamento é de R$ 26.868.734,21"
+    },
+    {
+      "timestamp": "2026-03-19T11:50:03.025913",
+      "assistente": "estrategico",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 2156,
+      "primeiras_100_chars": "Excelente! Vou fazer essa análise de dados com base apenas nos dados fornecidos. Não há prompts nem "
+    },
+    {
+      "timestamp": "2026-03-19T11:50:06.432685",
+      "assistente": "estrategico",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 366,
+      "primeiras_100_chars": "Aqui está a minha resposta:\n\n{\n\"swot\": [\n{\n\"strengths\": [\n[\"Faturamento médio\", 24315.60],\n[\"Faturam"
+    },
+    {
+      "timestamp": "2026-03-19T11:51:33.979526",
+      "assistente": "financeiro",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 1888,
+      "primeiras_100_chars": "**ANÁLISE**\n\nA partir dos dados fornecidos, observe-se que é possível identificar padrões mensurávei"
+    },
+    {
+      "timestamp": "2026-03-19T11:51:49.885187",
+      "assistente": "financeiro",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 2840,
+      "primeiras_100_chars": "**CONSULTOR FINANCEIRO SÊNIOR - MODO AUTOCORREÇÃO**\n\n**Análise**\n\nA partir dos dados fornecidos, é p"
+    },
+    {
+      "timestamp": "2026-03-19T11:52:01.838578",
+      "assistente": "financeiro",
+      "quantidade_avisos": 7,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'e colaborador indica que poucos clientes e colaboradores contribuem significativamente para o crescimento da empresa' não encontrado na planilha",
+        "Cliente/Empresa 'e colaborador indica que poucos clientes e colaboradores contribuem significativamente para o crescimento da empresa' não encontrado na planilha",
+        "Cliente/Empresa 'depende de uma pouca variedade de clientes e colaboradores e que uma perda desses clientes ou colaboradores pode ter efeitos significativos na empresa' não encontrado na planilha",
+        "Cliente/Empresa 'ou uma mudança nos processos de trabalho' não encontrado na planilha",
+        "Cliente/Empresa 'e suas operações' não encontrado na planilha",
+        "Cliente/Empresa 'ou uma mudança nos processos de trabalho' não encontrado na planilha",
+        "Cliente/Empresa 'e suas operacoes' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 2570,
+      "primeiras_100_chars": "**CONSULTOR FINANCEIRO SÊNIOR - MODO AUTOCORREÇÃO**\n\n**Resumo**: Análise dos dados fornecidos, verif"
+    },
+    {
+      "timestamp": "2026-03-19T11:52:10.909649",
+      "assistente": "operacional",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 3210,
+      "primeiras_100_chars": "**Análise Operacional**\n\n**_Texto Markdown_**\n\nAvanços nos dados do período observado:\n\n*   O volume"
+    },
+    {
+      "timestamp": "2026-03-19T11:52:19.919600",
+      "assistente": "operacional",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'em funcionamento' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 3539,
+      "primeiras_100_chars": "{\n  \"contrato_de_saida\": {\n    \"texto_markdown\": \"\"\"\n## Revisão dos dados fornecidos\n\n Ao analisar o"
+    },
+    {
+      "timestamp": "2026-03-19T11:52:35.989414",
+      "assistente": "operacional",
+      "quantidade_avisos": 1,
+      "quantidade_erros": 1,
+      "avisos": [
+        "Cliente/Empresa 'são VELOE' não encontrado na planilha"
+      ],
+      "erros": [
+        "Menção a ano 2024 que não existe nos dados (anos disponíveis: [np.int64(2025), np.int64(2026)])"
+      ],
+      "tamanho_resposta": 2037,
+      "primeiras_100_chars": "**CONSULTOR OPERACIONAL SÊNIOR - MODO AUTOCORREÇÃO**\n\n**VERIFICAÇÃO DE RESTRIÇÃO CRÍTICA**\n\nSim, ver"
+    },
+    {
+      "timestamp": "2026-03-19T11:52:52.072096",
+      "assistente": "estrategico",
+      "quantidade_avisos": 4,
+      "quantidade_erros": 0,
+      "avisos": [
+        "Cliente/Empresa 'Veleo é o maior faturador' não encontrado na planilha",
+        "Cliente/Empresa 'deve monitorar cuidadosamente o valor dos faturamentos em janeiro e fevereiro para garantir que atenda às necessidades crescentes de demanda' não encontrado na planilha",
+        "Cliente/Empresa 'deve considerar investing em recursos adicionais para aumentar sua capacidade de produção e entrega de serviços nos períodos mais movimentados do ano' não encontrado na planilha",
+        "Cliente/Empresa 'deve avaliar a possibilidade de oferecer serviços personalizados para clientes que são mais ativos em janeiro e fevereiro' não encontrado na planilha"
+      ],
+      "erros": [],
+      "tamanho_resposta": 2730,
+      "primeiras_100_chars": "**ANÁLISE DE RISCO E RECOMENDAÇÕES**\n\n**SWOT e recomendações derivam apenas de padrões mensuráveis o"
+    },
+    {
+      "timestamp": "2026-03-19T11:53:00.874394",
+      "assistente": "estrategico",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 3755,
+      "primeiras_100_chars": "### Texto Markdown\n\nConsiderações iniciais\n=====================\n\nComo consultor estratégico, a anál"
+    },
+    {
+      "timestamp": "2026-03-19T11:53:13.005929",
+      "assistente": "estrategico",
+      "quantidade_avisos": 0,
+      "quantidade_erros": 0,
+      "avisos": [],
+      "erros": [],
+      "tamanho_resposta": 2640,
+      "primeiras_100_chars": "**CONSULTOR ESTRATÉGICO SÊNIOR - MODO AUTOCORREÇÃO**\n\n**ANÁLISE PADRÃO**\n\nComo consultar estratégico"
+    }
+  ]
+}

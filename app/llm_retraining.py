@@ -23,7 +23,13 @@ class GerenciadorAvisos:
         if os.path.exists(self.arquivo_log):
             try:
                 with open(self.arquivo_log, 'r', encoding='utf-8') as f:
-                    return json.load(f)
+                    dados = json.load(f)
+                    # Compatibilidade: versões antigas eram lista direta.
+                    if isinstance(dados, list):
+                        return dados
+                    if isinstance(dados, dict) and isinstance(dados.get("items"), list):
+                        return dados.get("items", [])
+                    return []
             except:
                 return []
         return []
@@ -58,7 +64,12 @@ class GerenciadorAvisos:
         """Salva histórico de avisos."""
         os.makedirs(os.path.dirname(self.arquivo_log), exist_ok=True)
         with open(self.arquivo_log, 'w', encoding='utf-8') as f:
-            json.dump(self.avisos_registrados, f, ensure_ascii=False, indent=2)
+            payload = {
+                "schema_version": "1.0",
+                "generated_at": datetime.now().isoformat(),
+                "items": self.avisos_registrados,
+            }
+            json.dump(payload, f, ensure_ascii=False, indent=2)
     
     def analisar_padroes(self):
         """Analisa padrões nos avisos para identificar problemas recorrentes."""

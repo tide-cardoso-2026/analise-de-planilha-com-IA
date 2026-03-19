@@ -4,8 +4,10 @@ Detecta alucinações e atualiza prompts automaticamente.
 """
 
 import re
+import json
 import pandas as pd
 from pathlib import Path
+from typing import Any, Dict, Optional, Tuple
 
 
 class ValidadorAlucinacao:
@@ -183,34 +185,208 @@ Você DEVE seguir estas regras rigorosamente:
 
 def criar_dados_validacao(df):
     """Cria um sumário dos dados reais para passar ao assistente."""
-    
+
+    anos = sorted(df["ano"].unique())
+    meses = sorted(df["mês"].unique())
+    clientes_unicos = sorted(df["nmcliente"].unique())
+    colaboradores_unicos = sorted(df["nmcolaborador"].unique())
+
+    top_clientes_por_faturamento = (
+        df.groupby("nmcliente")["vlrfaturamento"]
+        .sum()
+        .sort_values(ascending=False)
+        .head(15)
+        .to_string()
+    )
+
+    top_colaboradores_por_faturamento = (
+        df.groupby("nmcolaborador")["vlrfaturamento"]
+        .sum()
+        .sort_values(ascending=False)
+        .head(15)
+        .to_string()
+    )
+
+    top_colaboradores_por_registros = (
+        df.groupby("nmcolaborador")
+        .size()
+        .sort_values(ascending=False)
+        .head(15)
+        .to_string()
+    )
+
+    faturamento_por_ano = df.groupby("ano")["vlrfaturamento"].sum().sort_index().to_string()
+
+    # Tabela mês x ano (soma), usada para comparação 2025 vs 2026.
+    faturamento_por_mes_ano = (
+        df.pivot_table(
+            index="mês",
+            columns="ano",
+            values="vlrfaturamento",
+            aggfunc="sum",
+        )
+        .sort_index()
+    )
+    faturamento_por_mes_ano = faturamento_por_mes_ano.fillna(pd.NA)
+
+    registros_por_mes_ano = (
+        df.groupby(["ano", "mês"])
+        .size()
+        .sort_index()
+        .to_string()
+    )
+
+    colaboradores_ativos_por_mes_ano = (
+        df.groupby(["ano", "mês"])["nmcolaborador"]
+        .nunique()
+        .sort_index()
+        .to_string()
+    )
+
     resumo = f"""
 ## DADOS REAIS VERIFICADOS
 
 ### Período
-- Anos: {sorted(df['ano'].unique())}
-- Meses: {sorted(df['mês'].unique())}
+- Anos: {anos}
+- Meses: {meses}
 
-### Clientes ({len(df['nmcliente'].unique())} identificados)
-{', '.join(sorted(df['nmcliente'].unique()))}
+### Clientes ({len(clientes_unicos)} identificados)
+{', '.join(clientes_unicos)}
 
-### Colaboradores
-- Total: {df['idcolaborador'].nunique()} colaboradores diferentes
+### Colaboradores ({len(colaboradores_unicos)} identificados)
+{', '.join(colaboradores_unicos)}
 
-### Faturamento
+### Volume de registros
+- Total de registros: {len(df)}
+- Registros por Ano e Mês (contagem):
+{registros_por_mes_ano}
+
+### Colaboradores ativos por Ano e Mês (contagem distinta)
+{colaboradores_ativos_por_mes_ano}
+
+### Faturamento (vlrfaturamento)
 - Mínimo: R$ {df['vlrfaturamento'].min():,.2f}
 - Máximo: R$ {df['vlrfaturamento'].max():,.2f}
+- Soma total: R$ {df['vlrfaturamento'].sum():,.2f}
 - Média: R$ {df['vlrfaturamento'].mean():,.2f}
 - Mediana: R$ {df['vlrfaturamento'].median():,.2f}
 
-### Faturamento por Ano
-{df.groupby('ano')['vlrfaturamento'].sum().to_string()}
+### Faturamento por Ano (soma)
+{faturamento_por_ano}
 
-### Faturamento por Mês (Todos os Anos)
-{df.groupby('mês')['vlrfaturamento'].sum().to_string()}
+### Faturamento por Mês e Ano (soma)
+{faturamento_por_mes_ano.to_string()}
 
-### Clientes por Frequência
-{df['nmcliente'].value_counts().head(10).to_string()}
+### Top clientes por faturamento (até 15)
+{top_clientes_por_faturamento}
+
+### Top colaboradores por faturamento (até 15)
+{top_colaboradores_por_faturamento}
+
+### Top colaboradores por quantidade de registros (até 15)
+{top_colaboradores_por_registros}
 
 """
     return resumo
+
+
+def extrair_json_do_texto(texto: str) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
+    """
+    Tenta extrair JSON válido de uma resposta do LLM.
+    - Aceita JSON "puro" ou JSON dentro de codefence (```json ... ```).
+    - Se não conseguir, retorna (None, erro).
+    """
+    if not texto or not isinstance(texto, str):
+        return None, "texto vazio ou inválido"
+
+    raw = texto.strip()
+
+    # Remove code fences comuns.
+    if raw.startswith("```"):
+        raw = re.sub(r"^```[a-zA-Z]*\n", "", raw)
+        if raw.endswith("```"):
+            raw = raw[:-3].strip()
+
+    # Tentativa 1: parse direto.
+    try:
+        payload = json.loads(raw)
+        if isinstance(payload, dict):
+            return payload, None
+        return None, "JSON carregado mas não é um objeto (dict)"
+    except Exception:
+        pass
+
+    # Tentativa 2: tenta extrair o(s) objeto(s) JSON mais plausível(is) perto do final.
+    end = raw.rfind("}")
+    if end == -1:
+        return None, "não foi possível localizar delimitadores de JSON"
+
+    # Recuar o "start" até achar um JSON parseável.
+    scan_end = end
+    while scan_end > 0:
+        start = raw.rfind("{", 0, scan_end + 1)
+        if start == -1:
+            break
+
+        candidato = raw[start : end + 1]
+        try:
+            payload = json.loads(candidato)
+            if isinstance(payload, dict):
+                return payload, None
+            return None, "JSON extraído mas não é um objeto (dict)"
+        except Exception:
+            # Se falhar, desloca o end para antes do '{' encontrado,
+            # forçando a tentar outro candidato mais "interno".
+            end = start - 1
+            scan_end = end
+
+    return None, "não foi possível localizar/parsear um objeto JSON válido"
+
+
+def normalizar_payload_area(payload: Any, tipo_assistente: str) -> Dict[str, Any]:
+    """
+    Garante um formato mínimo (schema) para `outputs/insights.json`,
+    mesmo se o LLM retornar algo incompleto ou falhar no parse do JSON.
+    """
+    schema_version = payload.get("schema_version") if isinstance(payload, dict) else None
+    schema_version = schema_version or "1.1"
+
+    texto_markdown = ""
+    resumo_executivo = ""
+    kpis = []
+    insights = []
+    pontos_de_atencao = []
+
+    checagem_payload = {}
+
+    if isinstance(payload, dict):
+        texto_markdown = payload.get("texto_markdown") or payload.get("texto") or ""
+        resumo_executivo = payload.get("resumo_executivo") or ""
+        kpis = payload.get("kpis", []) if isinstance(payload.get("kpis"), list) else []
+        insights = payload.get("insights", []) if isinstance(payload.get("insights"), list) else []
+        pontos_de_atencao = (
+            payload.get("pontos_de_atencao", [])
+            if isinstance(payload.get("pontos_de_atencao"), list)
+            else []
+        )
+        checagem_payload = payload.get("checagem", {}) if isinstance(payload.get("checagem"), dict) else {}
+
+    checagem = {
+        "anos_e_periodos_usados_estao_nos_dados": bool(
+            checagem_payload.get("anos_e_periodos_usados_estao_nos_dados", False)
+        ),
+        "numeros_citados_sao_verificaveis_nos_agregados": bool(
+            checagem_payload.get("numeros_citados_sao_verificaveis_nos_agregados", False)
+        ),
+    }
+
+    return {
+        "schema_version": schema_version,
+        "area": tipo_assistente,
+        "resumo_executivo": resumo_executivo,
+        "texto_markdown": texto_markdown,
+        "kpis": kpis,
+        "insights": insights,
+        "pontos_de_atencao": pontos_de_atencao,
+        "checagem": checagem,
+    }

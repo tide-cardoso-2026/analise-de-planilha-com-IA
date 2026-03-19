@@ -1,7 +1,12 @@
 import os
 import sys
 from app.llm import call_llm
-from app.llm_validator import ValidadorAlucinacao, criar_dados_validacao
+from app.llm_validator import (
+    ValidadorAlucinacao,
+    criar_dados_validacao,
+    extrair_json_do_texto,
+    normalizar_payload_area,
+)
 from app.llm_retraining import SistemaRetraining
 
 # =========================
@@ -48,10 +53,11 @@ def gerar_prompt(nome_arquivo, df):
     # Cria sumário dos dados reais para o assistente verificar
     dados_reais = criar_dados_validacao(df)
 
-    try:
-        prompt = template.format(dados=dados_reais)
-    except KeyError as e:
-        raise Exception(f"[!] Placeholder faltando no prompt: {e}")
+    if "{dados}" not in template:
+        raise Exception("[!] Placeholder {dados} não encontrado no prompt.")
+
+    # Usar replace evita problemas com chaves { } presentes em JSON.
+    prompt = template.replace("{dados}", dados_reais)
 
     return prompt
 
@@ -73,48 +79,107 @@ def chamar_assistente_com_validacao(nome_arquivo, tipo_assistente, df, max_tenta
     """
     validador = ValidadorAlucinacao(df)
     retraining = SistemaRetraining()
-    
-    print(f"   [Validando resposta...]", end=" ")
-    
-    # Gera prompt
-    prompt = gerar_prompt(nome_arquivo, df)
-    
-    # Chama LLM
-    resposta = call_llm(prompt)
-    
-    if resposta is None or resposta.startswith("[!]"):
-        print("Erro ao chamar LLM")
-        return resposta
-    
-    # Valida resposta
-    resultado_validacao = validador.validar_resposta(resposta, tipo_assistente)
-    
-    # Processa resultado e filtra falsos positivos
-    avisos_reais = retraining.processar_resultado(
-        tipo_assistente,
-        resultado_validacao['avisos'],
-        resultado_validacao['alucinacoes'],
-        resposta
-    )
-    
-    if resultado_validacao['valida'] and not avisos_reais:
-        print("[OK] Validado")
-        return resposta
-    
-    if avisos_reais or resultado_validacao['alucinacoes']:
-        print("[!] Alucinacoes detectadas")
-        
-        # Log das alucinações REAIS (já filtradas)
-        for alucinacao in resultado_validacao['alucinacoes']:
-            print(f"      - {alucinacao}")
-        for aviso in avisos_reais[:3]:  # Top 3 apenas
-            print(f"      - AVISO: {aviso}")
-        
-        # Retorna mesmo com avisos (foi detectado e está no log)
-        print(f"   [Retornando resposta com correções detectadas]")
-        return resposta
-    
-    return resposta
+
+    if max_tentativas < 1:
+        max_tentativas = 1
+
+    for tentativa in range(max_tentativas):
+        print(f"   [Validando resposta... {tentativa + 1}/{max_tentativas}]", end=" ")
+
+        # Gera prompt
+        prompt = gerar_prompt(nome_arquivo, df)
+
+        if tentativa > 0:
+            # Reforça contrato caso a tentativa anterior falhe em produzir JSON válido.
+            prompt += (
+                "\n\n=== CONTRATO DE SAIDA (OBRIGATORIO) ===\n"
+                "- Responda APENAS com JSON válido.\n"
+                "- Não inclua texto antes/depois, nem Markdown ou codefence.\n"
+                "- O JSON DEVE ser um objeto (dict) e seguir o esquema descrito.\n"
+            )
+
+        # Chama LLM
+        resposta = call_llm(prompt)
+
+        if resposta is None:
+            print("Erro ao chamar LLM (resposta None)")
+            payload_norm = normalizar_payload_area({"texto_markdown": ""}, tipo_assistente)
+            payload_norm["valido_por_conteudo"] = False
+            payload_norm["erro_llm"] = "resposta None"
+            return payload_norm
+
+        if not isinstance(resposta, str) or resposta.startswith("[!]"):
+            print("Erro ao chamar LLM")
+            payload_norm = normalizar_payload_area({"texto_markdown": str(resposta)}, tipo_assistente)
+            payload_norm["valido_por_conteudo"] = False
+            payload_norm["erro_llm"] = "resposta inválida ou prefixo [!]"
+            return payload_norm
+
+        # Valida resposta (regex/heurísticas)
+        resultado_validacao = validador.validar_resposta(resposta, tipo_assistente)
+
+        # Processa resultado e filtra falsos positivos
+        avisos_reais = retraining.processar_resultado(
+            tipo_assistente,
+            resultado_validacao["avisos"],
+            resultado_validacao["alucinacoes"],
+            resposta,
+        )
+
+        payload, erro_json = extrair_json_do_texto(resposta)
+        payload_norm = normalizar_payload_area(payload or {"texto_markdown": resposta}, tipo_assistente)
+
+        payload_norm["avisos_validador"] = avisos_reais
+        payload_norm["alucinacoes_validador"] = resultado_validacao["alucinacoes"]
+        payload_norm["erro_json"] = erro_json
+
+        texto_markdown = str(payload_norm.get("texto_markdown") or "").strip()
+        resumo = str(payload_norm.get("resumo_executivo") or "").strip()
+        kpis = payload_norm.get("kpis") or []
+        insights = payload_norm.get("insights") or []
+        pontos = payload_norm.get("pontos_de_atencao") or []
+
+        conteudo_estruturado_vazio = (
+            not texto_markdown
+            and not resumo
+            and isinstance(kpis, list) and len(kpis) == 0
+            and isinstance(insights, list) and len(insights) == 0
+            and isinstance(pontos, list) and len(pontos) == 0
+        )
+
+        contrato_ok = (erro_json is None) and (not conteudo_estruturado_vazio)
+
+        if conteudo_estruturado_vazio and erro_json is None:
+            payload_norm["erro_conteudo"] = "conteudo_estruturado_vazio"
+
+        payload_norm["valido_por_conteudo"] = bool(resultado_validacao["valida"]) and (
+            not payload_norm["alucinacoes_validador"]
+        ) and contrato_ok
+
+        # Log simplificado
+        if payload_norm["valido_por_conteudo"] and not avisos_reais:
+            print("[OK] Validado (JSON + validação)")
+            return payload_norm
+
+        if erro_json is not None:
+            print("[!] JSON inválido (contrato).")
+        elif conteudo_estruturado_vazio and erro_json is None:
+            print("[!] Conteúdo JSON vazio (contrato).")
+        elif avisos_reais or resultado_validacao["alucinacoes"]:
+            print("[!] Avisos/alucinações detectadas (mas JSON pode estar ok).")
+
+        # Se o contrato falhou (JSON ou conteúdo vazio), tenta de novo.
+        if (erro_json is not None or conteudo_estruturado_vazio) and tentativa < max_tentativas - 1:
+            continue
+
+        # Fallback: retorna o que veio (mesmo assim, com flags)
+        return payload_norm
+
+    # Nunca deveria chegar aqui.
+    payload_norm = normalizar_payload_area({"texto_markdown": ""}, tipo_assistente)
+    payload_norm["valido_por_conteudo"] = False
+    payload_norm["erro_llm"] = "falha inesperada no loop"
+    return payload_norm
 
 # =========================
 # ASSISTENTE FINANCEIRO
@@ -124,7 +189,8 @@ def assistente_financeiro(df):
     return chamar_assistente_com_validacao(
         "assistente_financeiro_v2.txt", 
         "financeiro", 
-        df
+        df,
+        max_tentativas=3,
     )
 
 # =========================
@@ -135,7 +201,8 @@ def assistente_operacional(df):
     return chamar_assistente_com_validacao(
         "assistente_operacional_v2.txt", 
         "operacional", 
-        df
+        df,
+        max_tentativas=3,
     )
 
 # =========================
@@ -146,5 +213,6 @@ def assistente_estrategico(df):
     return chamar_assistente_com_validacao(
         "assistente_estrategico_v2.txt", 
         "estrategico", 
-        df
+        df,
+        max_tentativas=3,
     )

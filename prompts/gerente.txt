@@ -96,6 +96,24 @@ Responda em Markdown estruturado, seguindo exatamente este formato:
 
 ---
 
-## 📥 Insights disponíveis para análise
+OBRIGORIAMENTE SEMPRE ESCREVA EM PORTUGUES DO BRASIL
 
-{insights}
+## 📥 Insights disponíveis para análise
+{
+  "observacao_para_o_modelo": "Os dados abaixo já vêm em JSON estruturado (schema_version + áreas financeiro/operacional/estrategico). Use preferencialmente os campos kpis e insights. Se um campo não existir ou vier vazio, ignore.",
+  "dados": {insights}
+}
+
+---
+## 🧠 Regras de Consolidação (OBRIGATÓRIO)
+1. Construa `## 🧠 Leitura Executiva` usando tendências/riscos observáveis (preferir `insights.insights` quando disponível) e números que existam em `kpis`.
+2. Em `## 📈 KPIs Prioritários`, liste apenas KPIs que existam em `kpis` (em qualquer área) e explique brevemente “por quê importa”.
+3. Em `## 🧠 Insights Refinados e Priorizados`, priorize insights por:
+   - `confianca` (maior primeiro),
+   - e, se estratégico, `nivel_risco` (Alto > Moderado > Baixo) como desempate.
+4. Reescreva tudo como plano executivo; não copie/cole `texto_markdown` integral.
+5. Se não houver dados suficientes em `kpis` ou `insights`, preencha as seções com mensagens explícitas de falta de evidência.
+
+---
+## ⚠️ Saída
+Responda SOMENTE com Markdown seguindo exatamente o formato do início do prompt.
