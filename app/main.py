@@ -27,13 +27,6 @@ from app.file_manager import save_outputs
 # =========================
 # PIPELINE PRINCIPAL
 # =========================
-def formatar_insights(insights_dict):
-    texto = ""
-    for area, conteudo in insights_dict.items():
-        texto += f"\n## {area.upper()}\n{conteudo}\n"
-    return texto
-
-
 def main(skip_dashboard=False):
     print("[*] Lendo planilhas...")
     df = read_all_excels("data")
@@ -51,9 +44,7 @@ def main(skip_dashboard=False):
     }
 
     print("[*] Gerente consolidando decisao...")
-
-    insights_formatados = formatar_insights(insights)
-    markdown = gerente_decisor(insights_formatados)
+    markdown = gerente_decisor(insights)
 
     print("[*] Salvando outputs...")
     save_outputs(insights, markdown)

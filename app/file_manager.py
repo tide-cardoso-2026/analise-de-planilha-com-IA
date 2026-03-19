@@ -17,10 +17,15 @@ def save_outputs(insights, markdown):
     import os
     os.makedirs("outputs", exist_ok=True)
 
-    # insights
+    # insights (schema versionado na raiz, mantendo compatibilidade com chaves por área)
     with open("outputs/insights.json", "w", encoding="utf-8") as f:
         import json
-        json.dump(insights, f, ensure_ascii=False, indent=2)
+        payload = {
+            "schema_version": "1.1",
+            "generated_at": datetime.now().isoformat(),
+            **(insights if isinstance(insights, dict) else {}),
+        }
+        json.dump(payload, f, ensure_ascii=False, indent=2)
 
     # markdown
     with open("outputs/dashboard.md", "w", encoding="utf-8") as f:
@@ -98,10 +103,18 @@ def generate_pdf(insights, markdown):
     story.append(Paragraph("RESUMO EXECUTIVO", heading_style))
     story.append(Spacer(1, 0.1 * inch))
 
+    areas_permitidas = {"financeiro", "operacional", "estrategico"}
     for area, conteudo in insights.items():
-        if isinstance(conteudo, str) and conteudo.strip():
+        if area not in areas_permitidas:
+            continue
+        if isinstance(conteudo, dict):
+            conteudo_texto = conteudo.get("resumo_executivo") or conteudo.get("texto_markdown") or ""
+        else:
+            conteudo_texto = conteudo if isinstance(conteudo, str) else ""
+
+        if conteudo_texto and conteudo_texto.strip():
             # Limita tamanho para evitar PDFs muito grandes
-            preview = conteudo[:500] + "..." if len(conteudo) > 500 else conteudo
+            preview = conteudo_texto[:500] + "..." if len(conteudo_texto) > 500 else conteudo_texto
             area_formatted = area.replace("_", " ").upper()
             story.append(Paragraph(f"<b>{area_formatted}</b>", styles["Heading3"]))
             preview_sanitizado = _sanitizar_pdf_text(preview)

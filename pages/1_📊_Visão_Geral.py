@@ -58,14 +58,23 @@ st.header("🤖 Insights dos Assistentes")
 
 col1, col2, col3 = st.columns(3)
 
+def _payload_to_text(payload):
+    if isinstance(payload, dict):
+        return (
+            payload.get("resumo_executivo")
+            or payload.get("texto_markdown")
+            or ""
+        )
+    return payload or ""
+
 col1.subheader("💰 Financeiro")
-col1.write(insights.get("financeiro", "Sem dados"))
+col1.write(_payload_to_text(insights.get("financeiro", "Sem dados")))
 
 col2.subheader("⚙️ Operacional")
-col2.write(insights.get("operacional", "Sem dados"))
+col2.write(_payload_to_text(insights.get("operacional", "Sem dados")))
 
 col3.subheader("🧭 Estratégico")
-col3.write(insights.get("estrategico", "Sem dados"))
+col3.write(_payload_to_text(insights.get("estrategico", "Sem dados")))
 
 # =========================
 # 🧠 Gerente
@@ -86,6 +95,8 @@ else:
 st.header("🧪 Avaliação dos Assistentes")
 
 def score_card(nome, texto):
+    if isinstance(texto, dict):
+        texto = texto.get("texto_markdown") or texto.get("resumo_executivo") or ""
     tamanho = len(texto)
 
     if tamanho < 150:
@@ -123,13 +134,13 @@ st.header("🧠 Feedback Executivo do Gerente")
 
 feedback = []
 
-if "financeiro" in insights:
+if insights.get("financeiro"):
     feedback.append("💰 Financeiro: boa base analítica, mas pode aprofundar tendências e sazonalidade.")
 
-if "operacional" in insights:
+if insights.get("operacional"):
     feedback.append("⚙️ Operacional: insights úteis, porém faltam impactos diretos na operação.")
 
-if "estrategico" in insights:
+if insights.get("estrategico"):
     feedback.append("🧭 Estratégico: visão relevante, pode melhorar priorização de decisões.")
 
 for f in feedback:
