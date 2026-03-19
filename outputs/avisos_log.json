@@ -1,0 +1,37 @@
+[
+  {
+    "timestamp": "2026-03-19T07:48:59.050758",
+    "assistente": "financeiro",
+    "quantidade_avisos": 2,
+    "quantidade_erros": 0,
+    "avisos": [
+      "Cliente/Empresa '| Cliente | Faturamento Total |\n| --- | --- |\n| LIVELO  | R$ 1' não encontrado na planilha",
+      "Cliente/Empresa '\"LIVELO\" é o principal contribuinte de receitas' não encontrado na planilha"
+    ],
+    "erros": [],
+    "tamanho_resposta": 1703,
+    "primeiras_100_chars": "### Análise financeira baseada em dados reais\n\n#### Resumo Executivo\n**Faturamento Total:** R$ 3.728"
+  },
+  {
+    "timestamp": "2026-03-19T07:49:11.021244",
+    "assistente": "operacional",
+    "quantidade_avisos": 1,
+    "quantidade_erros": 0,
+    "avisos": [
+      "Cliente/Empresa 'que mencionei está nos dados? SIM\n3' não encontrado na planilha"
+    ],
+    "erros": [],
+    "tamanho_resposta": 1732,
+    "primeiras_100_chars": "**Análise Operacional Baseada em Dados Reais**\n\n#### Volume e Carga Operacional\nO volume total de tr"
+  },
+  {
+    "timestamp": "2026-03-19T07:49:23.016136",
+    "assistente": "estrategico",
+    "quantidade_avisos": 0,
+    "quantidade_erros": 0,
+    "avisos": [],
+    "erros": [],
+    "tamanho_resposta": 2047,
+    "primeiras_100_chars": "**Análise Estratégica Baseada em Dados Reais**\n\n#### Situação Estratégica Atual\n\nA baseada nos dados"
+  }
+]
